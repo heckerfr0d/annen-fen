@@ -22,25 +22,23 @@ class myClient(discord.Client):
                 return(fect['value'].replace('Chuck Norris', 'Annen'))
             messFect = await get_fect(self)
             await ctx.channel.send(messFect)
+        elif ctx.content.lower().startswith('annen hits'):
+            user = ctx.author
+            v = user.voice
+            if v != None:
+                vc = await v.channel.connect()
+                random.seed()
+                patt = os.path.join('hits', random.choice(os.listdir('hits')))
+                vc.play(discord.FFmpegPCMAudio(source=patt))
+                while vc.is_playing():
+                    await asyncio.sleep(1)
+                await vc.disconnect()
+            else:
+                await ctx.channel.send('Eda paadan pattnne edenklum keredaa')
         elif 'anna' in ctx.content.lower():
             await ctx.channel.send('anna uyir🔥🔥')
         elif 'annen' in ctx.content.lower():
             await ctx.channel.send('annen kidu😏🔥🔥')
-        elif ctx.content.lower().startswith('annen hits'):
-            user = ctx.message.author
-            vc = user.voice.voice_channel
-            if vc != None:
-                vc1 = await client.join_voice_channel(vc)
-                patt = random.choice(os.listdir('hits'))
-                player = vc1.create_ffmpeg_player(patt, after=lambda: print('done'))
-                player.start()
-                while not player.is_done():
-                    await asyncio.sleep(1)
-                # disconnect after the player has finished
-                player.stop()
-                await vc1.disconnect()
-            else:
-                await client.say('Eda paadan pattnne edenklum keredaa')
 
 
 # This class is used to interact with the Discord WebSocket and API.
