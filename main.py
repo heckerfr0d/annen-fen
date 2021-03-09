@@ -10,6 +10,7 @@ class myClient(discord.Client):
   # Coroutine to login
     async def on_ready(self):
         print(f'Logged in as {client.user}'.format(client))
+        await client.change_presence(activity=discord.Game(name='Coco Cola Pepsi Seyuj Annen Sesky'))
 
   # Coroutine to answer messages
     async def on_message(self, ctx):
@@ -35,6 +36,13 @@ class myClient(discord.Client):
                 await vc.disconnect()
             else:
                 await ctx.channel.send('Eda paadan pattnne edenklum keredaa')
+        elif ctx.content.lower().startswith('anna roast'):
+            data = requests.get('https://evilinsult.com/generate_insult.php?lang=en&amp;type=json').content.decode()
+            mentioned = ctx.author
+            for user in ctx.mentions:
+                mentioned = user
+            await ctx.delete()
+            await ctx.channel.send(mentioned.mention+' '+data)
         elif 'anna' in ctx.content.lower():
             await ctx.channel.send('anna uyir🔥🔥')
         elif 'annen' in ctx.content.lower():
