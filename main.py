@@ -45,7 +45,7 @@ class myClient(discord.Client):
             await ctx.delete()
             await ctx.channel.send(mentioned.mention+' '+data)
         elif 'anna' in ctx.content.lower():
-            await ctx.channel.send('anna uyir🔥🔥')
+            await ctx.add_reaction('🔥')
         elif 'annen' in ctx.content.lower():
             await ctx.channel.send('annen kidu😏🔥🔥')
 
