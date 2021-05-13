@@ -46,9 +46,11 @@ class myClient(discord.Client):
             await ctx.delete()
             await ctx.channel.send(mentioned.mention+' '+data)
         elif 'anna' in ctx.content.lower():
-            await ctx.channel.send('anna uyir🔥🔥')
+            await ctx.add_reaction('💪')
+            for emoji in ctx.guild.emojis:
+                await ctx.add_reaction(str(emoji))
         elif 'annen' in ctx.content.lower():
-            await ctx.channel.send('annen kidu😏🔥🔥')
+            await ctx.add_reaction('🔥')
 
 
 # This class is used to interact with the Discord WebSocket and API.
