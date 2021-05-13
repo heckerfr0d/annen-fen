@@ -10,8 +10,7 @@ class myClient(discord.Client):
   # Coroutine to login
     async def on_ready(self):
         print(f'Logged in as {client.user}'.format(client))
-        activityvar = discord.Activity(type=discord.ActivityType.custom,state="Coco Cola Pepsi Seyuj Annen Sesky")
-        await client.change_presence(activity=activityvar)
+        await client.change_presence(activity=discord.Streaming(name="Coco Cola Pepsi Seyuj Annen Sesky", url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"))
 
   # Coroutine to answer messages
     async def on_message(self, ctx):
