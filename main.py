@@ -10,7 +10,7 @@ class myClient(discord.Client):
   # Coroutine to login
     async def on_ready(self):
         print(f'Logged in as {client.user}'.format(client))
-        await client.change_presence(activity=discord.Streaming(name="Coco Cola Pepsi Seyuj Annen Sesky", url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"))
+        await client.change_presence(activity=discord.Streaming(name="Coco Cola Pepsi Seyuj Annen Sesky", url="https://www.youtube.com/watch?v=_olVbRl-fJU"))
 
   # Coroutine to answer messages
     async def on_message(self, ctx):
@@ -23,7 +23,8 @@ class myClient(discord.Client):
                 truFect = fect['value'].replace('Chuck Norris', 'Annen').replace('Chuck', 'Annen').replace('Norris', 'Annen')
                 return(truFect)
             messFect = await get_fect(self)
-            await ctx.channel.send(messFect)
+            embed = discord.Embed(title="🔥 Annen 🔥", description=messFect, color=0x00ff00)
+            await ctx.channel.send(embed=embed)
         elif ctx.content.lower().startswith('annen hits'):
             user = ctx.author
             v = user.voice
