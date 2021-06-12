@@ -27,7 +27,7 @@ class myClient(discord.Client):
                 truFect = fect['value'].replace('Chuck Norris', 'Annen').replace('Chuck', 'Annen').replace('Norris', 'Annen')
                 return(truFect)
             messFect = await get_fect(self)
-            embed = discord.Embed(title="🔥 Annen 🔥", description=messFect, color=0x00ff00)
+            embed = discord.Embed(title="🔥 Annen 🔥", description=messFect, color=ctx.author.color)
             await ctx.channel.send(embed=embed)
 
         # harimuraleeeeeeeeravammmm
