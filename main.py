@@ -3,7 +3,6 @@ import discord
 import base64
 import requests
 import json
-import asyncio
 import os, random
 
 class myClient(discord.Client):
@@ -14,9 +13,14 @@ class myClient(discord.Client):
 
   # Coroutine to answer messages
     async def on_message(self, ctx):
+
+        # recursion baad
         if ctx.author == client.user:
             return
+
+        # annen mess ka baap
         elif ctx.content.lower().startswith('annen mess'):
+            await ctx.add_reaction('🔥')
             async def get_fect(self):
                 response = requests.get('https://api.chucknorris.io/jokes/random')
                 fect = json.loads(response.text)
@@ -25,19 +29,32 @@ class myClient(discord.Client):
             messFect = await get_fect(self)
             embed = discord.Embed(title="🔥 Annen 🔥", description=messFect, color=0x00ff00)
             await ctx.channel.send(embed=embed)
+
+        # harimuraleeeeeeeeravammmm
         elif ctx.content.lower().startswith('annen hits'):
-            user = ctx.author
-            v = user.voice
-            if v != None:
-                vc = await v.channel.connect()
+            await ctx.add_reaction('😍')
+            if not ctx.author.voice:
+                await ctx.channel.send('Eda paadan pattnne edenklum keredaa')
+            else:
+                if not client.voice_clients or client.voice_clients[0].channel != ctx.author.voice.channel:
+                    vc = await ctx.author.voice.channel.connect()
+                else:
+                    vc = client.voice_clients[0]
                 random.seed()
                 patt = os.path.join('hits', random.choice(os.listdir('hits')))
                 vc.play(discord.FFmpegPCMAudio(source=patt))
                 while vc.is_playing():
-                    await asyncio.sleep(1)
+                    try:
+                        msg = await client.wait_for('message', timeout=3.0)
+                        if msg.content.lower().startswith("anna next"):
+                            patt = os.path.join('hits', random.choice(os.listdir('hits')))
+                            vc.stop()
+                            vc.play(discord.FFmpegPCMAudio(source=patt))
+                    except:
+                        pass
                 await vc.disconnect()
-            else:
-                await ctx.channel.send('Eda paadan pattnne edenklum keredaa')
+
+        # krual annen
         elif ctx.content.lower().startswith('anna roast'):
             data = requests.get('https://evilinsult.com/generate_insult.php?lang=en&amp;type=json').content.decode()
             mentioned = ctx.author
@@ -45,10 +62,10 @@ class myClient(discord.Client):
                 mentioned = user
             await ctx.delete()
             await ctx.channel.send(mentioned.mention+' '+data)
+
+        # annen mind aakkum 😌️
         elif 'anna' in ctx.content.lower():
             await ctx.add_reaction('💪')
-            for emoji in ctx.guild.emojis:
-                await ctx.add_reaction(str(emoji))
         elif 'annen' in ctx.content.lower():
             await ctx.add_reaction('🔥')
 
