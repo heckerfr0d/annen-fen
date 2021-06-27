@@ -18,6 +18,12 @@ class myClient(discord.Client):
         if ctx.author == client.user:
             return
 
+        elif ctx.content.lower().startswith('anna ithenth my'):
+            embed = discord.Embed(title="Annen Fen 😎️", description="Born of Annen's mess", color=ctx.author.color)
+            embed.add_field(name="annen mess", value="Exhilarating tales from the Legends of Annen", inline=False)
+            embed.add_field(name="annen hits", value='Mesmerizing "hiphop songs" in Annen\'s original voice', inline=False)
+            embed.add_field(name="anna roast @loser", value="Equivalent to saying anna theerthekk (brutally destroy the loser)", inline=False)
+
         # annen mess ka baap
         elif ctx.content.lower().startswith('annen mess'):
             await ctx.add_reaction('🔥')
