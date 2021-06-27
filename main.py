@@ -24,7 +24,7 @@ class myClient(discord.Client):
             async def get_fect(self):
                 response = requests.get('https://api.chucknorris.io/jokes/random')
                 fect = json.loads(response.text)
-                truFect = fect['value'].replace('Chuck Norris', 'Annen').replace('Chuck', 'Annen').replace('Norris', 'Annen')
+                truFect = fect['value'].replace("Chuck Norris'", "Annen's").replace("Norris'", "Annen's").replace('Chuck Norris', 'Annen').replace('Chuck', 'Annen').replace('Norris', 'Annen')
                 return(truFect)
             messFect = await get_fect(self)
             embed = discord.Embed(title="🔥 Annen 🔥", description=messFect, color=ctx.author.color)
