@@ -23,6 +23,7 @@ class myClient(discord.Client):
             embed.add_field(name="annen mess", value="Exhilarating tales from the Legends of Annen", inline=False)
             embed.add_field(name="annen hits", value='Mesmerizing "hiphop songs" in Annen\'s original voice', inline=False)
             embed.add_field(name="anna roast @loser", value="Equivalent to saying anna theerthekk (brutally destroy the loser)", inline=False)
+            await ctx.channel.send(embed=embed)
 
         # annen mess ka baap
         elif ctx.content.lower().startswith('annen mess'):
