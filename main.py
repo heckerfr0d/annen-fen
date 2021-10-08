@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import discord
-import base64
 import requests
 import json
 import os, random
@@ -80,5 +79,5 @@ class myClient(discord.Client):
 # This class is used to interact with the Discord WebSocket and API.
 client = myClient()
 # Bot login using the token
-token = base64.b64decode('T0RFMU9ETTBPREkxT1RneE9ESXdPVEk0LllEeUxZdy5XQmo3T2lJWml4UzZDdmtpeS1TeDBNbTZlT28=').decode('utf-8')
+token = os.getenv('ANNEN')
 client.run(token)
